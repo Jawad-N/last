@@ -147,18 +147,19 @@ def api_get_user(user_id):
 @app.route('/api/users/add', methods = ['POST'])
 def api_add_user():
     user = request.get_json()
+    print(type(user))
     return jsonify(insert_user(user))
 
 @app.route('/api/users/update', methods = ['PUT'])
 def api_update_user():  
     user = request.get_json()
     return jsonify(update_user(user))
-
+    
 @app.route('/api/users/delete/<user_id>', methods = ['DELETE'])
 def api_delete_user(user_id):
     return jsonify(delete_user(user_id))
 
 if __name__ == "__main__":
-    #app.debug = True
-    #app.run(debug=True)
+    app.debug = True
+    app.run(debug=True)
     app.run() #run app
